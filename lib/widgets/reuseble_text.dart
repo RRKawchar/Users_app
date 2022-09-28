@@ -7,11 +7,12 @@ class ReusebleText extends StatelessWidget {
   double? fontSize;
   Color? color;
   FontWeight?fontWeight;
+  double? letterSpacing;
 
-   ReusebleText({Key? key, required this.text,this.fontSize,this.color,this.fontWeight}) : super(key: key);
+   ReusebleText({Key? key, required this.text,this.fontSize,this.color,this.fontWeight,this.letterSpacing}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,style: TextStyle(fontSize: fontSize,color: color,fontWeight: fontWeight),);
+    return Text(text,style: TextStyle(fontSize: fontSize,color: color,fontWeight: fontWeight,letterSpacing: letterSpacing),);
   }
 }
