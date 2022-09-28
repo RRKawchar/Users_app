@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:users_app/global/global.dart';
 import 'package:users_app/widgets/reuseble_text.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -24,12 +25,12 @@ class _MyDrawerState extends State<MyDrawer> {
                    width: 130,
                    child: CircleAvatar(
                      backgroundImage: NetworkImage(
-                       "https://www.homestratosphere.com/wp-content/uploads/2019/07/American-elm.jpg.webp"
+                       sharedPreferences!.getString("photoUrl")!,
                      ),
                    ),
                  ),
                  const SizedBox(height: 12,),
-                 ReusebleText(text: "User Name",color: Colors.grey,fontSize: 20,fontWeight: FontWeight.bold,)
+                 ReusebleText(text: sharedPreferences!.getString("name")!,color: Colors.grey,fontSize: 20,fontWeight: FontWeight.bold,)
                ],
              ),
            ),
@@ -44,7 +45,7 @@ class _MyDrawerState extends State<MyDrawer> {
                  ),
 
                 ListTile(
-                  leading: Icon(Icons.home,color: Colors.grey,),
+                  leading:const Icon(Icons.home,color: Colors.grey,),
                   title: ReusebleText(text:"Home",color: Colors.grey,),
                   onTap: (){
 
