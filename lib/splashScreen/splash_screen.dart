@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:users_app/auth/auth_screen.dart';
 import 'package:users_app/main_screen/home_screen.dart';
 import 'package:users_app/utils/colors.dart';
 import 'package:users_app/widgets/reuseble_text.dart';
@@ -18,7 +20,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(const Duration(seconds: 4),(){
 
-      Navigator.push(context, MaterialPageRoute(builder: (c)=>const HomeScreen()));
+     if(FirebaseAuth.instance.currentUser!=null){
+       Navigator.push(context, MaterialPageRoute(builder: (c)=>const HomeScreen()));
+
+     }else{
+       Navigator.push(context, MaterialPageRoute(builder: (c)=>const AuthScreen()));
+
+     }
+
 
     });
 

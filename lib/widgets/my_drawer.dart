@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:users_app/auth/auth_screen.dart';
 import 'package:users_app/global/global.dart';
+import 'package:users_app/splashScreen/splash_screen.dart';
 import 'package:users_app/widgets/reuseble_text.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -108,7 +111,8 @@ class _MyDrawerState extends State<MyDrawer> {
                   leading:const Icon(Icons.exit_to_app,color: Colors.grey,),
                   title: ReusebleText(text:"Sign Out",color: Colors.grey,),
                   onTap: (){
-
+                     FirebaseAuth.instance.signOut();
+                     Navigator.push(context, MaterialPageRoute(builder: (c)=>const SplashScreen()));
                   },
                 ),
                 const Divider(

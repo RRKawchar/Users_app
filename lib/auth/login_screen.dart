@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/main_screen/home_screen.dart';
+import 'package:users_app/splashScreen/splash_screen.dart';
 import 'package:users_app/widgets/custom_text_field.dart';
 import 'package:users_app/widgets/loading_dialog.dart';
 import 'package:users_app/widgets/reuseble_text.dart';
@@ -61,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if(currentUser !=null){
 
        checkIfUserRecordExist(currentUser!);
+
     }
 
   }
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
    await FirebaseFirestore.instance.collection("users").
    doc(currentUser.uid).
    get().then((record)async {
-     Navigator.push(context, MaterialPageRoute(builder: (c) => HomeScreen()));
+     Navigator.push(context, MaterialPageRoute(builder: (c) => SplashScreen()));
        /// record is exist
 
      if(record.exists){
@@ -84,23 +86,25 @@ class _LoginScreenState extends State<LoginScreen> {
 
          List<String> userCartList=record.data()!['userCart'].cost<String>();
          await sharedPreferences!.setStringList('userCart', userCartList);
+         // Navigator.pop(context);
+         Navigator.push(context, MaterialPageRoute(builder: (c) => SplashScreen()));
 
-         Navigator.push(context, MaterialPageRoute(builder: (c) => HomeScreen()));
        }
 
 
        /// status is not approved
        else{
-         FirebaseAuth.instance.signOut();
+         // FirebaseAuth.instance.signOut();
           Navigator.pop(context);
          Fluttertoast.showToast(msg: "You have ben BLOCKED by admin.\n Contact admin: admin@ishop.com");
        }
      }
      /// Record not exist
      else{
-       FirebaseAuth.instance.signOut();
+       // FirebaseAuth.instance.signOut();
        Navigator.pop(context);
        Fluttertoast.showToast(msg: "This record is do not exist.");
+
      }
    });
   }

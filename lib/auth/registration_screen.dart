@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/main_screen/home_screen.dart';
+import 'package:users_app/splashScreen/splash_screen.dart';
 import 'package:users_app/widgets/custom_text_field.dart';
 import 'package:users_app/widgets/loading_dialog.dart';
 import 'package:users_app/widgets/reuseble_text.dart';
@@ -126,7 +127,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     await sharedPreferences!.setString("photoUrl", downloadUrlImge);
     await sharedPreferences!.setStringList("userCart", ["initialValue"]);
 
-    Navigator.push(context, MaterialPageRoute(builder: (c) => HomeScreen()));
+    Navigator.push(context, MaterialPageRoute(builder: (c) => SplashScreen()));
   }
 
   @override
