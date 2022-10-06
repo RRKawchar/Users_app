@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:users_app/auth/auth_screen.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/main_screen/home_screen.dart';
+import 'package:users_app/model_practice/product_view.dart';
 import 'package:users_app/model_practice/signup_practice.dart';
 
 import 'package:users_app/splashScreen/splash_screen.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: SignUpPractice(),
+      home: ProductView(),
     );
   }
 }

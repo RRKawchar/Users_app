@@ -27,7 +27,7 @@ class Product {
   String image;
   Rating rating;
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
+  factory Product.fromJson(Map<dynamic, dynamic> json) => Product(
     id: json["id"],
     title: json["title"],
     price: json["price"].toDouble(),
@@ -66,7 +66,7 @@ class Rating {
   double rate;
   int count;
 
-  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
+  factory Rating.fromJson(Map<dynamic, dynamic> json) => Rating(
     rate: json["rate"].toDouble(),
     count: json["count"],
   );
